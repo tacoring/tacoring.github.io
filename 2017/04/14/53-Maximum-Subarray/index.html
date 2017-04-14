@@ -87,12 +87,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Taco Leetcode">
-<meta property="og:url" content="https://tacoring.github.io/leetcode/archives/2017/index.html">
+<meta name="description" content="Find the contiguous subarray within an array (containing at least one number) which has the largest sum. For example, given the array [-2,1,-3,4,-1,2,1,-5,4],the contiguous subarray [4,-1,2,1] has the">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="53_Maximum_Subarray">
+<meta property="og:url" content="https://tacoring.github.io/leetcode/2017/04/14/53-Maximum-Subarray/index.html">
 <meta property="og:site_name" content="Taco Leetcode">
+<meta property="og:description" content="Find the contiguous subarray within an array (containing at least one number) which has the largest sum. For example, given the array [-2,1,-3,4,-1,2,1,-5,4],the contiguous subarray [4,-1,2,1] has the">
+<meta property="og:updated_time" content="2017-04-14T07:07:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Taco Leetcode">
+<meta name="twitter:title" content="53_Maximum_Subarray">
+<meta name="twitter:description" content="Find the contiguous subarray within an array (containing at least one number) which has the largest sum. For example, given the array [-2,1,-3,4,-1,2,1,-5,4],the contiguous subarray [4,-1,2,1] has the">
 
 
 
@@ -120,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://tacoring.github.io/leetcode/archives/2017/"/>
+  <link rel="canonical" href="https://tacoring.github.io/leetcode/2017/04/14/53-Maximum-Subarray/"/>
 
 
 
 
 
-  <title> Archive | Taco Leetcode </title>
+  <title> 53_Maximum_Subarray | Taco Leetcode </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -151,7 +156,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,66 +240,136 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      Um..! 1 post. Keep on posting.
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://tacoring.github.io/leetcode/2017/04/14/53-Maximum-Subarray/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Taco Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Taco Leetcode">
     </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                53_Maximum_Subarray
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-14T00:05:35-07:00">
+                2017-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        <p>Find the contiguous subarray within an array (containing at least one number) which has the largest sum.</p>
+<p>For example, given the array [-2,1,-3,4,-1,2,1,-5,4],<br>the contiguous subarray [4,-1,2,1] has the largest sum = 6.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># <span class="doctag">@param</span> &#123;Integer[]&#125; nums</span></div><div class="line"><span class="comment"># <span class="doctag">@return</span> &#123;Integer&#125;</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_sub_array</span><span class="params">(nums)</span></span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">if</span> nums.empty? <span class="params">||</span> nums.length == <span class="number">0</span></div><div class="line">    globalMax = -(<span class="number">2</span>**(<span class="number">0</span>.size * <span class="number">8</span> -<span class="number">2</span>))</div><div class="line">    <span class="comment"># globalMax = 0</span></div><div class="line">    curMax = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..nums.length - <span class="number">1</span> <span class="keyword">do</span></div><div class="line">        <span class="comment"># p curMax</span></div><div class="line">        <span class="comment"># p nums[i]</span></div><div class="line">        curMax = curMax + nums[i]</div><div class="line">        globalMax = [globalMax, curMax].max</div><div class="line">        <span class="keyword">if</span> curMax &lt; <span class="number">0</span></div><div class="line">            curMax = <span class="number">0</span></div><div class="line">        <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">    <span class="keyword">return</span> globalMax</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+    </div>
 
-      <h1 class="post-title">
+    <div>
+      
         
-            <a class="post-title-link" href="/2017/04/14/53-Maximum-Subarray/" itemprop="url">
-              
-                <span itemprop="name">53_Maximum_Subarray</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-14T00:05:35-07:00"
-              content="2017-04-14" >
-          04-14
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+
+      
+      
+    </footer>
   </article>
 
 
 
-    
-
-  </section>
-
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -302,6 +377,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -482,11 +561,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
 
 
   
